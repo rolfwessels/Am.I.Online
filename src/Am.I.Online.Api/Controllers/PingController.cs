@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Am.I.Online.Api.Controllers;
 
 [ApiController]
-[Route(Constants.DefaultRoute)]
+[Route(Constants.PingRoute)]
 public class PingController : ControllerBase
 {
   private readonly string _environmentName;
@@ -17,7 +17,7 @@ public class PingController : ControllerBase
     _version = FileVersionInfo.GetVersionInfo(GetType().Assembly.Location).ProductVersion!;
   }
 
-  [HttpGet()]
+  [HttpGet]
   public PingResponse Get()
   {
     return new PingResponse(_environmentName, Environment.MachineName, _version ?? "0.0.0");

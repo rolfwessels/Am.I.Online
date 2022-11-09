@@ -1,36 +1,24 @@
-using Am.I.Online.Api.GraphQL;
-using Am.I.Online.Api.GraphQL.Movies;
+using Am.I.Online.Api;
+using Prometheus;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
+builder.Host.UseSerilog((_, lc) => lc
+  .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+  .WriteTo.Console());
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSingleton<Settings>();
 builder.Services.AddSwaggerGen();
-// builder.Services.AddSingleton<QueryDataLoader>();
-builder.Services.AddGraphQLServer()
-  .AddQueryType<QueryType>()
-  .AddType<ActorType>()
-  .AddType<MovieType>()
-  .AddDataLoader<ActorDataLoader>()
-  ;
-
+builder.Services.AddHostedService<MonitorValues>();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-  app.UseSwagger();
-  app.UseSwaggerUI();
-}
-
-app.UseAuthorization();
-
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseRouting();
 app.MapControllers();
-app.MapGraphQL();
-
+app.UseEndpoints(e => e.MapMetrics("stats/metrics"));
 app.Run();
 
 namespace Am.I.Online.Api

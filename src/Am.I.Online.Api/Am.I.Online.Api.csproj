@@ -10,10 +10,14 @@
     <InternalsVisibleTo Include="Am.I.Online.Api.Tests" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Bumbershoot.Utilities" Version="1.0.14" />
+    <PackageReference Include="Bumbershoot.Utilities" Version="1.0.15" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="12.12.0" />
     <PackageReference Include="HotChocolate.Data" Version="12.12.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.1-dev-00896" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="prometheus-net" Version="6.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="6.0.0" />
   </ItemGroup>
 
 </Project>
