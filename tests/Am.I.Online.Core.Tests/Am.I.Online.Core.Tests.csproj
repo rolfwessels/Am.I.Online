@@ -24,9 +24,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-        <PackageReference Include="Bumbershoot.Utilities" Version="1.0.14" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Am.I.Online.Core\Am.I.Online.Core.csproj" />
