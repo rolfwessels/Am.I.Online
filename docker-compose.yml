@@ -1,0 +1,24 @@
+version: "3.5"
+services:
+  dev:
+    container_name: am-i-online-dev
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/am-i-online"
+      - "./.aws:/root/.aws"
+      # (find src* | grep  '/bin$' && find src* | grep  '/obj$' && find tests* | grep  '/bin$' && find tests* | grep  '/obj$')  | sed 's/^/ - \/am-i-online\//'
+      - /am-i-online/src/Am.I.Online.Api/bin
+      - /am-i-online/src/Am.I.Online.Core/bin
+      - /am-i-online/src/Am.I.Online.Api/obj
+      - /am-i-online/src/Am.I.Online.Core/obj
+      - /am-i-online/tests/Am.I.Online.Api.Tests/bin
+      - /am-i-online/tests/Am.I.Online.Core.Tests/bin
+      - /am-i-online/tests/Am.I.Online.Api.Tests/obj
+      - /am-i-online/tests/Am.I.Online.Core.Tests/obj
+    environment:
+      - NODE_ENV=local
+    entrypoint: top -b
+    logging:
+      driver: none

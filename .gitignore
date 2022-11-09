@@ -1,0 +1,16 @@
+.vs/
+.aws/
+/build
+/lib
+/tools/nunit
+/tools/nant
+/tools/IlMerge
+**/bin/*
+**/obj/*
+*.user
+*.ncrunchsolution
+*.suo
+/**/*nCrunch**
+dist/*
+tests/*/TestResults/**/*
+**/*NCrunch*

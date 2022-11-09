@@ -1,0 +1,5 @@
+{
+    "dotnet-test-explorer.testProjectPath": "tests\\**\\*.csproj",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 3000
+}
