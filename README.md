@@ -6,11 +6,9 @@
 <img src="./docs/logo.png" style=" margin-left: auto;margin-right: auto;display: block;"
      alt="Am i online">
 
+# Am.I.Online
 
-# Am i online
-
-
-This makes am i online happen
+Runs a service that pings another server. You can then monitor the prometheus logs
 
 ## Getting started
 
